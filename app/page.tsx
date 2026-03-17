@@ -1,5 +1,6 @@
 import { NoticedLanding } from "@/components/noticed-landing"
 
+// Version 1: Too good to go unnoticed
 export default function Version1Page() {
   return (
     <NoticedLanding

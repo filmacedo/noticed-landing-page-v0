@@ -1,5 +1,6 @@
 import { NoticedLanding } from "@/components/noticed-landing"
 
+// Version 3: Hollywood analogy
 export default function Version3Page() {
   return (
     <NoticedLanding

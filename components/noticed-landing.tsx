@@ -1,5 +1,6 @@
 "use client"
 
+// Shared landing page component with reveal animations
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
@@ -140,25 +141,33 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
         </a>
       </main>
 
-      {/* Footer with version links */}
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-center items-center px-6 md:px-8 py-5 text-sm gap-8">
+      {/* Footer with version links on left, FAQ on right */}
+      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm">
+        <div className="flex gap-6">
+          <Link 
+            href="/" 
+            className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+          >
+            version one
+          </Link>
+          <Link 
+            href="/v2" 
+            className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+          >
+            version two
+          </Link>
+          <Link 
+            href="/v3" 
+            className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+          >
+            version three
+          </Link>
+        </div>
         <Link 
-          href="/" 
-          className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+          href="/faq" 
+          className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
         >
-          too good to go unnoticed
-        </Link>
-        <Link 
-          href="/v2" 
-          className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-        >
-          we hate networking
-        </Link>
-        <Link 
-          href="/v3" 
-          className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-        >
-          hollywood analogy
+          faq
         </Link>
       </footer>
     </div>
