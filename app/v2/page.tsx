@@ -2,7 +2,6 @@
 
 import { NoticedLanding } from "@/components/noticed-landing"
 
-// Version 2: We hate networking
 export default function Version2Page() {
   return (
     <NoticedLanding
