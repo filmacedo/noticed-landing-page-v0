@@ -108,45 +108,46 @@ export function NoticedLanding({
       <div className="fixed inset-0 bg-black/45 -z-10" />
 
       {/* Phase 1: Centered Brand - always "noticed" */}
-      {/* For logoMoveAnimation: logo stays visible and moves to top position */}
-      {logoMoveAnimation ? (
+      {/* For NON-logoMoveAnimation: logo fades out then content appears with title */}
+      {!logoMoveAnimation && phase !== "content" && (
         <div 
-          className="fixed left-0 right-0 flex justify-center z-10 transition-all duration-700 ease-out"
-          style={{ 
-            top: phase === "brand" ? "50%" : "0",
-            transform: phase === "brand" ? "translateY(-50%)" : "translateY(0)",
-            paddingTop: phase === "brand" ? "0" : "40vh"
-          }}
+          className="fixed inset-0 flex items-center justify-center z-10 transition-opacity duration-500 ease-out"
+          style={{ opacity: phase === "brand" ? 1 : 0 }}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.08em]">
             noticed
           </h1>
         </div>
-      ) : (
-        phase !== "content" && (
-          <div 
-            className="fixed inset-0 flex items-center justify-center z-10 transition-opacity duration-500 ease-out"
-            style={{ opacity: phase === "brand" ? 1 : 0 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.08em]">
-              noticed
-            </h1>
-          </div>
-        )
       )}
 
       {/* Hero Section - exactly 100vh */}
       <main 
         className="h-screen flex flex-col justify-center items-center px-6 text-center relative"
         style={{ 
-          opacity: phase === "content" ? 1 : 0,
+          opacity: logoMoveAnimation ? 1 : (phase === "content" ? 1 : 0),
           transition: "opacity 0.3s ease-out",
           pointerEvents: phase === "content" ? "auto" : "none"
         }}
       >
-        {/* Title - only render if exists and not using logoMoveAnimation */}
-        {/* For logoMoveAnimation, the title is rendered by the fixed positioned element above */}
-        {hasTitle && !logoMoveAnimation && (
+        {/* For logoMoveAnimation: Logo starts centered, then moves to top as title */}
+        {logoMoveAnimation && (
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em] transition-all duration-700 ease-out"
+            style={{
+              position: phase === "brand" ? "fixed" : "relative",
+              top: phase === "brand" ? "50%" : "auto",
+              left: phase === "brand" ? "50%" : "auto",
+              transform: phase === "brand" ? "translate(-50%, -50%)" : "none",
+              opacity: 1,
+              zIndex: phase === "brand" ? 10 : 1
+            }}
+          >
+            noticed
+          </h1>
+        )}
+        
+        {/* For non-logoMoveAnimation: regular title that fades in with content */}
+        {!logoMoveAnimation && hasTitle && (
           <h1 
             className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]"
             style={getRevealStyle(1)}
@@ -154,13 +155,14 @@ export function NoticedLanding({
             {manifestoTitle}
           </h1>
         )}
-        
-        {/* Spacer for logoMoveAnimation to push content down */}
-        {logoMoveAnimation && (
-          <div className="h-16 md:h-20" />
-        )}
 
-        <div className="max-w-xl text-lg md:text-xl leading-relaxed font-normal">
+        <div 
+          className="max-w-xl text-lg md:text-xl leading-relaxed font-normal transition-opacity duration-500"
+          style={{ 
+            opacity: logoMoveAnimation ? (phase === "content" ? 1 : 0) : 1,
+            pointerEvents: phase === "content" ? "auto" : "none"
+          }}
+        >
           {content.map((block, index) => renderContent(block, index))}
         </div>
 
@@ -168,7 +170,10 @@ export function NoticedLanding({
         <a
           href="#"
           className="inline-block px-8 py-3.5 text-base lowercase tracking-wider text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/20 hover:border-white/35 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.25)]"
-          style={getRevealStyle(content.length + (hasTitle ? 2 : 1))}
+          style={{
+            ...getRevealStyle(content.length + (logoMoveAnimation ? 1 : (hasTitle ? 2 : 1))),
+            opacity: logoMoveAnimation ? (phase === "content" ? 1 : 0) : (revealStep >= content.length + (hasTitle ? 2 : 1) ? 1 : 0)
+          }}
         >
           {ctaText}
         </a>
