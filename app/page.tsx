@@ -1,6 +1,5 @@
 "use client"
 
-// noticed landing page - two phase animation
 import { Cormorant_Garamond } from "next/font/google"
 import { useEffect, useState } from "react"
 
@@ -11,14 +10,13 @@ const cormorant = Cormorant_Garamond({
 })
 
 export default function NoticedLandingPage() {
-  // Phase 1: Brand centered on screen
-  // Phase 2: Brand fades out, then full content appears with brand at top
   const [phase, setPhase] = useState<"brand" | "transition" | "content">("brand")
+  const [revealStep, setRevealStep] = useState(0)
 
   useEffect(() => {
-    // Show brand centered for 2 seconds
+    // Phase 1: Show brand centered for 2 seconds
     const transitionTimer = setTimeout(() => setPhase("transition"), 2000)
-    // After fade out (0.5s), show full content
+    // Phase 2: After fade out (0.5s), show content
     const contentTimer = setTimeout(() => setPhase("content"), 2500)
 
     return () => {
@@ -26,6 +24,25 @@ export default function NoticedLandingPage() {
       clearTimeout(contentTimer)
     }
   }, [])
+
+  // Staggered reveal for content - triggers when phase becomes "content"
+  useEffect(() => {
+    if (phase !== "content") return
+
+    // Reveal each block with 150ms stagger (total ~1.2s for 8 steps)
+    const intervals: NodeJS.Timeout[] = []
+    for (let i = 1; i <= 8; i++) {
+      intervals.push(setTimeout(() => setRevealStep(i), i * 150))
+    }
+
+    return () => intervals.forEach(clearTimeout)
+  }, [phase])
+
+  const getRevealStyle = (step: number) => ({
+    opacity: revealStep >= step ? 1 : 0,
+    transform: revealStep >= step ? "translateY(0)" : "translateY(12px)",
+    transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
+  })
 
   return (
     <div className={`${cormorant.className} min-h-screen text-[#f5f5f5] lowercase tracking-wide`}>
@@ -60,22 +77,26 @@ export default function NoticedLandingPage() {
         </div>
       )}
 
-      {/* Phase 2: Full Content */}
+      {/* Phase 2: Full Content with staggered reveal */}
       <main 
-        className="min-h-screen flex flex-col justify-center items-center px-6 py-16 pb-28 text-center transition-opacity duration-700 ease-out"
+        className="min-h-screen flex flex-col justify-center items-center px-6 py-16 pb-28 text-center"
         style={{ 
           opacity: phase === "content" ? 1 : 0,
+          transition: "opacity 0.3s ease-out",
           pointerEvents: phase === "content" ? "auto" : "none"
         }}
       >
-        {/* Logo at top of content */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]">
+        {/* Step 1: Logo */}
+        <h1 
+          className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]"
+          style={getRevealStyle(1)}
+        >
           noticed
         </h1>
 
         <div className="max-w-xl text-lg md:text-xl leading-relaxed font-normal">
-          {/* Stanza 1 */}
-          <p className="mb-8">
+          {/* Step 2: Stanza 1 */}
+          <p className="mb-8" style={getRevealStyle(2)}>
             artists have agents.
             <br />
             athletes have agents.
@@ -83,13 +104,13 @@ export default function NoticedLandingPage() {
             builders have linkedin and cold dms.
           </p>
 
-          {/* Stanza 2 */}
-          <p className="mb-8">
+          {/* Step 3: Stanza 2 */}
+          <p className="mb-8" style={getRevealStyle(3)}>
             noticed changes that.
           </p>
 
-          {/* Stanza 3 */}
-          <p className="mb-8">
+          {/* Step 4: Stanza 3 */}
+          <p className="mb-8" style={getRevealStyle(4)}>
             meet your personal networking agent.
             <br />
             learns what your goals are.
@@ -100,18 +121,19 @@ export default function NoticedLandingPage() {
             so you never have to.
           </p>
 
-          {/* Stanza 4 - Tagline */}
-          <p className="italic mb-10">
+          {/* Step 5: Tagline */}
+          <p className="italic mb-10" style={getRevealStyle(5)}>
             focus on building.
             <br />
             let noticed handle the networking.
           </p>
         </div>
 
-        {/* CTA Button */}
+        {/* Step 6: CTA Button */}
         <a
           href="#"
           className="inline-block px-8 py-3.5 text-base lowercase tracking-wider text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/20 hover:border-white/35 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.25)]"
+          style={getRevealStyle(6)}
         >
           get early access
         </a>

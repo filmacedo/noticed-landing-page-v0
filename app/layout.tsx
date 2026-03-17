@@ -40,12 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${cormorant.className} antialiased`} style={{
-        color: '#f5f5f5',
-        textTransform: 'lowercase',
-        letterSpacing: '0.02em',
-        background: '#000'
-      }}>
+      <body className={`${cormorant.className} antialiased bg-black text-[#f5f5f5] lowercase tracking-wide`}>
         {children}
         <Analytics />
       </body>
