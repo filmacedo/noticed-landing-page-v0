@@ -6,11 +6,12 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 })
 
+// Teaser landing page for noticed
 export default function NoticedLandingPage() {
   return (
     <div className={`${cormorant.className} min-h-screen text-[#f5f5f5] lowercase tracking-wide`}>
-      {/* Video Background */}
-      <div className="fixed inset-0 -z-20">
+      {/* Video Background - using stock nature video as placeholder */}
+      <div className="fixed inset-0 -z-20 bg-black">
         <video
           autoPlay
           muted
@@ -19,7 +20,7 @@ export default function NoticedLandingPage() {
           className="w-full h-full object-cover"
         >
           <source
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/known%20bg%20video%20720-qpEOURdZPlDNeasfFDmhG6cPwbgRxH.mov"
+            src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
             type="video/mp4"
           />
         </video>
