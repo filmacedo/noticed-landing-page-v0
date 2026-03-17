@@ -1,0 +1,258 @@
+export default function NoticedLandingPage() {
+  return (
+    <>
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html, body {
+          height: 100%;
+          width: 100%;
+          overflow-x: hidden;
+        }
+      `}</style>
+
+      {/* Video Background */}
+      <div className="video-container">
+        <video autoPlay muted loop playsInline>
+          <source 
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/known%20bg%20video%20720-qpEOURdZPlDNeasfFDmhG6cPwbgRxH.mov" 
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      {/* Dark Overlay */}
+      <div className="overlay" />
+
+      {/* Main Content */}
+      <main className="content">
+        <h1 className="logo">noticed</h1>
+        
+        <div className="manifesto">
+          <p className="stanza">
+            artists have agents.<br />
+            athletes have agents.<br />
+            builders have linkedin and cold dms.
+          </p>
+          
+          <p className="stanza">
+            noticed changes that.
+          </p>
+          
+          <p className="stanza">
+            meet your personal networking agent.<br />
+            learns what your goals are.<br />
+            finds the best opportunities.<br />
+            and advocates for you —<br />
+            so you never have to.
+          </p>
+          
+          <p className="tagline">
+            focus on building.<br />
+            let noticed handle the networking.
+          </p>
+        </div>
+
+        <a href="#" className="cta">get early access</a>
+      </main>
+
+      {/* Footer */}
+      <footer>
+        <nav className="footer-links">
+          <a href="#">instagram</a>
+          <a href="#">tiktok</a>
+          <a href="#">contact</a>
+          <a href="#">faq</a>
+        </nav>
+        <div className="footer-right">
+          <a href="#">careers</a>
+          <span>© 2026</span>
+        </div>
+      </footer>
+
+      <style jsx>{`
+        .video-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -2;
+        }
+
+        .video-container video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.45);
+          z-index: -1;
+        }
+
+        .content {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 60px 24px 100px;
+          text-align: center;
+        }
+
+        .logo {
+          font-size: clamp(2.5rem, 8vw, 4rem);
+          font-weight: 400;
+          margin-bottom: 2.5rem;
+          letter-spacing: 0.08em;
+        }
+
+        .manifesto {
+          max-width: 600px;
+          font-size: clamp(1.1rem, 3vw, 1.35rem);
+          line-height: 1.7;
+          font-weight: 400;
+        }
+
+        .stanza {
+          margin-bottom: 2rem;
+        }
+
+        .stanza:last-of-type {
+          margin-bottom: 2.5rem;
+        }
+
+        .tagline {
+          font-style: italic;
+          margin-bottom: 2.5rem;
+        }
+
+        .cta {
+          display: inline-block;
+          padding: 14px 32px;
+          font-family: inherit;
+          font-size: 1rem;
+          text-transform: lowercase;
+          letter-spacing: 0.05em;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 
+            0 4px 24px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .cta:hover {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.35);
+          transform: translateY(-2px);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        footer {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 24px 32px;
+          font-size: 0.9rem;
+        }
+
+        .footer-links {
+          display: flex;
+          gap: 24px;
+        }
+
+        .footer-links a,
+        .footer-right a,
+        .footer-right span {
+          color: #f5f5f5;
+          text-decoration: none;
+          transition: opacity 0.2s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-right a:hover {
+          opacity: 0.7;
+        }
+
+        .footer-right {
+          display: flex;
+          gap: 24px;
+          align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .content {
+            padding: 80px 20px 120px;
+          }
+
+          .manifesto {
+            font-size: 1.15rem;
+          }
+
+          footer {
+            flex-direction: column;
+            gap: 16px;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+          }
+
+          .footer-links {
+            order: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px 24px;
+          }
+
+          .footer-right {
+            order: 2;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .logo {
+            font-size: 2.2rem;
+          }
+
+          .manifesto {
+            font-size: 1.05rem;
+          }
+
+          .stanza {
+            margin-bottom: 1.5rem;
+          }
+
+          footer {
+            font-size: 0.85rem;
+          }
+
+          .footer-links {
+            gap: 12px 20px;
+          }
+        }
+      `}</style>
+    </>
+  )
+}
