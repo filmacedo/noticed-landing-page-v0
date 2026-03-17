@@ -1,258 +1,99 @@
+import { Cormorant_Garamond } from "next/font/google"
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+})
+
 export default function NoticedLandingPage() {
   return (
-    <>
-      <style jsx global>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        html, body {
-          height: 100%;
-          width: 100%;
-          overflow-x: hidden;
-        }
-      `}</style>
-
+    <div className={`${cormorant.className} min-h-screen text-[#f5f5f5] lowercase tracking-wide`}>
       {/* Video Background */}
-      <div className="video-container">
-        <video autoPlay muted loop playsInline>
-          <source 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/known%20bg%20video%20720-qpEOURdZPlDNeasfFDmhG6cPwbgRxH.mov" 
+      <div className="fixed inset-0 -z-20">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/known%20bg%20video%20720-qpEOURdZPlDNeasfFDmhG6cPwbgRxH.mov"
             type="video/mp4"
           />
         </video>
       </div>
 
       {/* Dark Overlay */}
-      <div className="overlay" />
+      <div className="fixed inset-0 bg-black/45 -z-10" />
 
       {/* Main Content */}
-      <main className="content">
-        <h1 className="logo">noticed</h1>
-        
-        <div className="manifesto">
-          <p className="stanza">
-            artists have agents.<br />
-            athletes have agents.<br />
+      <main className="min-h-screen flex flex-col justify-center items-center px-6 py-16 pb-28 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]">
+          noticed
+        </h1>
+
+        <div className="max-w-xl text-lg md:text-xl leading-relaxed font-normal">
+          <p className="mb-8">
+            artists have agents.
+            <br />
+            athletes have agents.
+            <br />
             builders have linkedin and cold dms.
           </p>
-          
-          <p className="stanza">
-            noticed changes that.
-          </p>
-          
-          <p className="stanza">
-            meet your personal networking agent.<br />
-            learns what your goals are.<br />
-            finds the best opportunities.<br />
+
+          <p className="mb-8">noticed changes that.</p>
+
+          <p className="mb-8">
+            meet your personal networking agent.
+            <br />
+            learns what your goals are.
+            <br />
+            finds the best opportunities.
+            <br />
             and advocates for you —<br />
             so you never have to.
           </p>
-          
-          <p className="tagline">
-            focus on building.<br />
+
+          <p className="italic mb-10">
+            focus on building.
+            <br />
             let noticed handle the networking.
           </p>
         </div>
 
-        <a href="#" className="cta">get early access</a>
+        <a
+          href="#"
+          className="inline-block px-8 py-3.5 text-base lowercase tracking-wider text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/20 hover:border-white/35 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.25)]"
+        >
+          get early access
+        </a>
       </main>
 
       {/* Footer */}
-      <footer>
-        <nav className="footer-links">
-          <a href="#">instagram</a>
-          <a href="#">tiktok</a>
-          <a href="#">contact</a>
-          <a href="#">faq</a>
+      <footer className="fixed bottom-0 left-0 right-0 flex flex-col md:flex-row justify-between items-center px-6 md:px-8 py-5 text-sm gap-4 md:gap-0">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 order-1">
+          <a href="#" className="text-[#f5f5f5] no-underline transition-opacity duration-200 hover:opacity-70">
+            instagram
+          </a>
+          <a href="#" className="text-[#f5f5f5] no-underline transition-opacity duration-200 hover:opacity-70">
+            tiktok
+          </a>
+          <a href="#" className="text-[#f5f5f5] no-underline transition-opacity duration-200 hover:opacity-70">
+            contact
+          </a>
+          <a href="#" className="text-[#f5f5f5] no-underline transition-opacity duration-200 hover:opacity-70">
+            faq
+          </a>
         </nav>
-        <div className="footer-right">
-          <a href="#">careers</a>
+        <div className="flex gap-6 items-center order-2">
+          <a href="#" className="text-[#f5f5f5] no-underline transition-opacity duration-200 hover:opacity-70">
+            careers
+          </a>
           <span>© 2026</span>
         </div>
       </footer>
-
-      <style jsx>{`
-        .video-container {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -2;
-        }
-
-        .video-container video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.45);
-          z-index: -1;
-        }
-
-        .content {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 60px 24px 100px;
-          text-align: center;
-        }
-
-        .logo {
-          font-size: clamp(2.5rem, 8vw, 4rem);
-          font-weight: 400;
-          margin-bottom: 2.5rem;
-          letter-spacing: 0.08em;
-        }
-
-        .manifesto {
-          max-width: 600px;
-          font-size: clamp(1.1rem, 3vw, 1.35rem);
-          line-height: 1.7;
-          font-weight: 400;
-        }
-
-        .stanza {
-          margin-bottom: 2rem;
-        }
-
-        .stanza:last-of-type {
-          margin-bottom: 2.5rem;
-        }
-
-        .tagline {
-          font-style: italic;
-          margin-bottom: 2.5rem;
-        }
-
-        .cta {
-          display: inline-block;
-          padding: 14px 32px;
-          font-family: inherit;
-          font-size: 1rem;
-          text-transform: lowercase;
-          letter-spacing: 0.05em;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 50px;
-          background: rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 
-            0 4px 24px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .cta:hover {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: rgba(255, 255, 255, 0.35);
-          transform: translateY(-2px);
-          box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        }
-
-        footer {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 24px 32px;
-          font-size: 0.9rem;
-        }
-
-        .footer-links {
-          display: flex;
-          gap: 24px;
-        }
-
-        .footer-links a,
-        .footer-right a,
-        .footer-right span {
-          color: #f5f5f5;
-          text-decoration: none;
-          transition: opacity 0.2s ease;
-        }
-
-        .footer-links a:hover,
-        .footer-right a:hover {
-          opacity: 0.7;
-        }
-
-        .footer-right {
-          display: flex;
-          gap: 24px;
-          align-items: center;
-        }
-
-        @media (max-width: 768px) {
-          .content {
-            padding: 80px 20px 120px;
-          }
-
-          .manifesto {
-            font-size: 1.15rem;
-          }
-
-          footer {
-            flex-direction: column;
-            gap: 16px;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-          }
-
-          .footer-links {
-            order: 1;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px 24px;
-          }
-
-          .footer-right {
-            order: 2;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .logo {
-            font-size: 2.2rem;
-          }
-
-          .manifesto {
-            font-size: 1.05rem;
-          }
-
-          .stanza {
-            margin-bottom: 1.5rem;
-          }
-
-          footer {
-            font-size: 0.85rem;
-          }
-
-          .footer-links {
-            gap: 12px 20px;
-          }
-        }
-      `}</style>
-    </>
+    </div>
   )
 }
