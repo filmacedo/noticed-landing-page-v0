@@ -1,8 +1,9 @@
 "use client"
 
-// Shared landing page component with reveal animations
 import { useEffect, useState } from "react"
 import Link from "next/link"
+
+// Shared landing page component with reveal animations
 
 interface ContentBlock {
   type: "title" | "stanza" | "tagline" | "brand-inline"
@@ -16,9 +17,19 @@ interface NoticedLandingProps {
   ctaText: string
   videoUrl: string
   currentVersion: 1 | 2 | 3
+  showRevealFooter?: boolean
+  logoMoveAnimation?: boolean // Logo starts centered then moves to top
 }
 
-export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, currentVersion }: NoticedLandingProps) {
+export function NoticedLanding({ 
+  manifestoTitle, 
+  content, 
+  ctaText, 
+  videoUrl, 
+  currentVersion,
+  showRevealFooter = true,
+  logoMoveAnimation = false
+}: NoticedLandingProps) {
   const [phase, setPhase] = useState<"brand" | "transition" | "content">("brand")
   const [revealStep, setRevealStep] = useState(0)
 
@@ -97,15 +108,31 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
       <div className="fixed inset-0 bg-black/45 -z-10" />
 
       {/* Phase 1: Centered Brand - always "noticed" */}
-      {phase !== "content" && (
+      {/* For logoMoveAnimation: logo stays visible and moves to top position */}
+      {logoMoveAnimation ? (
         <div 
-          className="fixed inset-0 flex items-center justify-center z-10 transition-opacity duration-500 ease-out"
-          style={{ opacity: phase === "brand" ? 1 : 0 }}
+          className="fixed left-0 right-0 flex justify-center z-10 transition-all duration-700 ease-out"
+          style={{ 
+            top: phase === "brand" ? "50%" : "0",
+            transform: phase === "brand" ? "translateY(-50%)" : "translateY(0)",
+            paddingTop: phase === "brand" ? "0" : "40vh"
+          }}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.08em]">
             noticed
           </h1>
         </div>
+      ) : (
+        phase !== "content" && (
+          <div 
+            className="fixed inset-0 flex items-center justify-center z-10 transition-opacity duration-500 ease-out"
+            style={{ opacity: phase === "brand" ? 1 : 0 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.08em]">
+              noticed
+            </h1>
+          </div>
+        )
       )}
 
       {/* Hero Section - exactly 100vh */}
@@ -117,14 +144,20 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
           pointerEvents: phase === "content" ? "auto" : "none"
         }}
       >
-        {/* Title - only render if exists */}
-        {hasTitle && (
+        {/* Title - only render if exists and not using logoMoveAnimation */}
+        {/* For logoMoveAnimation, the title is rendered by the fixed positioned element above */}
+        {hasTitle && !logoMoveAnimation && (
           <h1 
             className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]"
             style={getRevealStyle(1)}
           >
             {manifestoTitle}
           </h1>
+        )}
+        
+        {/* Spacer for logoMoveAnimation to push content down */}
+        {logoMoveAnimation && (
+          <div className="h-16 md:h-20" />
         )}
 
         <div className="max-w-xl text-lg md:text-xl leading-relaxed font-normal">
@@ -142,7 +175,8 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
       </main>
 
       {/* Reveal Footer - sits below hero in normal document flow */}
-      <footer className="relative h-32 flex items-end">
+      {showRevealFooter && (
+      <footer className="relative h-20 flex items-end">
         {/* Gradient overlay - transparent at top to near-black at bottom */}
         <div 
           className="absolute inset-0 pointer-events-none"
@@ -181,6 +215,7 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
           </Link>
         </div>
       </footer>
+      )}
     </div>
   )
 }
