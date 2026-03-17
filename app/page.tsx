@@ -1,3 +1,5 @@
+"use client"
+
 import { NoticedLanding } from "@/components/noticed-landing"
 
 // Version 1: Too good to go unnoticed

@@ -79,8 +79,8 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
   }
 
   return (
-    <div className="min-h-screen text-[#f5f5f5] lowercase tracking-wide">
-      {/* Video Background */}
+    <div className="text-[#f5f5f5] lowercase tracking-wide">
+      {/* Video Background - fixed so it shows behind reveal footer */}
       <div className="fixed inset-0 -z-20 bg-black">
         <video
           autoPlay
@@ -93,7 +93,7 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
         </video>
       </div>
 
-      {/* Dark Overlay */}
+      {/* Dark Overlay - also fixed */}
       <div className="fixed inset-0 bg-black/45 -z-10" />
 
       {/* Phase 1: Centered Brand - always "noticed" */}
@@ -108,9 +108,9 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
         </div>
       )}
 
-      {/* Phase 2: Full Content with staggered reveal */}
+      {/* Hero Section - exactly 100vh */}
       <main 
-        className="min-h-screen flex flex-col justify-center items-center px-6 py-16 pb-28 text-center"
+        className="h-screen flex flex-col justify-center items-center px-6 text-center relative"
         style={{ 
           opacity: phase === "content" ? 1 : 0,
           transition: "opacity 0.3s ease-out",
@@ -141,34 +141,45 @@ export function NoticedLanding({ manifestoTitle, content, ctaText, videoUrl, cur
         </a>
       </main>
 
-      {/* Footer with version links on left, FAQ on right */}
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm">
-        <div className="flex gap-6">
+      {/* Reveal Footer - sits below hero in normal document flow */}
+      <footer className="relative h-32 flex items-end">
+        {/* Gradient overlay - transparent at top to near-black at bottom */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.95) 100%)"
+          }}
+        />
+        
+        {/* Footer content */}
+        <div className="relative z-10 w-full flex justify-between items-center px-6 md:px-8 py-5 text-sm">
+          <div className="flex gap-6">
+            <Link 
+              href="/" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version one
+            </Link>
+            <Link 
+              href="/v2" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version two
+            </Link>
+            <Link 
+              href="/v3" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version three
+            </Link>
+          </div>
           <Link 
-            href="/" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            href="/faq" 
+            className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
           >
-            version one
-          </Link>
-          <Link 
-            href="/v2" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-          >
-            version two
-          </Link>
-          <Link 
-            href="/v3" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-          >
-            version three
+            faq
           </Link>
         </div>
-        <Link 
-          href="/faq" 
-          className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
-        >
-          faq
-        </Link>
       </footer>
     </div>
   )

@@ -1,3 +1,5 @@
+"use client"
+
 import { NoticedLanding } from "@/components/noticed-landing"
 
 // Version 2: We hate networking
