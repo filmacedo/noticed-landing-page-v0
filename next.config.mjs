@@ -6,9 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Disable styled-jsx to prevent any conflicts
   compiler: {
     styledJsx: false,
+    removeConsole: false,
   },
 }
 
