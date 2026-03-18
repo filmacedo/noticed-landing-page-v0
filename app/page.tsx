@@ -5,7 +5,7 @@ import { NoticedLanding } from "@/components/noticed-landing"
 export default function Version1Page() {
   return (
     <NoticedLanding
-      manifestoTitle="noticed"
+      manifestoTitle=""
       content={[
         {
           type: "stanza",

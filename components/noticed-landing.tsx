@@ -15,7 +15,7 @@ interface NoticedLandingProps {
   ctaText: string
   videoUrl: string
   currentVersion: 1 | 2 | 3
-  logoAlwaysVisible?: boolean
+  logoAlwaysVisible: boolean
 }
 
 export function NoticedLanding({ 
@@ -24,19 +24,16 @@ export function NoticedLanding({
   ctaText, 
   videoUrl, 
   currentVersion,
-  logoAlwaysVisible = false
+  logoAlwaysVisible
 }: NoticedLandingProps) {
-  const [phase, setPhase] = useState<"brand" | "transition" | "content">("brand")
+  const [phase, setPhase] = useState<"brand" | "transition" | "content">(() => 
+    logoAlwaysVisible ? "content" : "brand"
+  )
   const [revealStep, setRevealStep] = useState(0)
-  
-  const contentLength = content.length
-  const hasManifestoTitle = manifestoTitle !== ""
 
+  // Phase transitions - only for non-logoAlwaysVisible versions
   useEffect(() => {
-    if (logoAlwaysVisible) {
-      const contentTimer = setTimeout(() => setPhase("content"), 500)
-      return () => clearTimeout(contentTimer)
-    }
+    if (logoAlwaysVisible) return
     
     const transitionTimer = setTimeout(() => setPhase("transition"), 2000)
     const contentTimer = setTimeout(() => setPhase("content"), 2500)
@@ -47,18 +44,23 @@ export function NoticedLanding({
     }
   }, [logoAlwaysVisible])
 
+  // Content reveal animation
   useEffect(() => {
     if (phase !== "content") return
 
-    const hasTitle = hasManifestoTitle && !logoAlwaysVisible
-    const totalSteps = contentLength + (hasTitle ? 1 : 0) + 1
-    const intervals: NodeJS.Timeout[] = []
-    for (let i = 1; i <= totalSteps; i++) {
-      intervals.push(setTimeout(() => setRevealStep(i), i * 150))
-    }
+    const hasTitle = manifestoTitle !== "" && !logoAlwaysVisible
+    const totalSteps = content.length + (hasTitle ? 1 : 0) + 1
+    const delay = logoAlwaysVisible ? 300 : 0
+    
+    const timeout = setTimeout(() => {
+      const intervals: NodeJS.Timeout[] = []
+      for (let i = 1; i <= totalSteps; i++) {
+        intervals.push(setTimeout(() => setRevealStep(i), i * 150))
+      }
+    }, delay)
 
-    return () => intervals.forEach(clearTimeout)
-  }, [phase, contentLength, hasManifestoTitle, logoAlwaysVisible])
+    return () => clearTimeout(timeout)
+  }, [phase, content.length, manifestoTitle, logoAlwaysVisible])
 
   const getRevealStyle = (step: number) => ({
     opacity: revealStep >= step ? 1 : 0,
@@ -95,6 +97,7 @@ export function NoticedLanding({
 
   return (
     <div className="min-h-screen text-[#f5f5f5] lowercase tracking-wide">
+      {/* Video Background */}
       <div className="fixed inset-0 -z-20 bg-black">
         <video
           autoPlay
@@ -107,11 +110,15 @@ export function NoticedLanding({
         </video>
       </div>
 
+      {/* Dark overlay */}
       <div className="fixed inset-0 bg-black/45 -z-10" />
+
+      {/* Top gradient overlay - black at top fading to transparent */}
+      <div className="fixed top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/80 to-transparent -z-5 pointer-events-none" />
 
       {/* For logoAlwaysVisible (v1): Logo as header at top of page */}
       {logoAlwaysVisible && (
-        <header className="fixed top-0 left-0 right-0 flex justify-center items-center pt-8 md:pt-12 z-10">
+        <header className="fixed top-0 left-0 right-0 flex justify-center items-center pt-10 md:pt-14 z-10">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[0.08em]">
             noticed
           </h1>
@@ -148,50 +155,52 @@ export function NoticedLanding({
           </h1>
         )}
 
+        {/* Manifesto content */}
         <div className="max-w-xl text-lg md:text-xl leading-relaxed font-normal">
           {content.map((block, index) => renderContent(block, index))}
         </div>
 
+        {/* CTA Button - more spacing from content, subtle hover */}
         <a
           href="#"
-          className="inline-block px-8 py-3.5 text-base lowercase tracking-wider text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/20 hover:border-white/35 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.25)]"
+          className="inline-block mt-8 px-8 py-3.5 text-base lowercase tracking-wider text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/15 hover:border-white/30"
           style={getRevealStyle(content.length + (logoAlwaysVisible ? 1 : (hasTitle ? 2 : 1)))}
         >
           {ctaText}
         </a>
       </main>
 
+      {/* Footer with gradient overlay */}
       <footer className="fixed bottom-0 left-0 right-0">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 pointer-events-none" />
+        <div className="absolute inset-0 h-24 -top-12 bg-gradient-to-b from-transparent to-black/90 pointer-events-none" />
         
         <div className="relative flex justify-between items-center px-6 md:px-8 py-5 text-sm">
-        <div className="flex gap-6">
+          <div className="flex gap-6">
+            <Link 
+              href="/" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version one
+            </Link>
+            <Link 
+              href="/v2" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version two
+            </Link>
+            <Link 
+              href="/v3" 
+              className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            >
+              version three
+            </Link>
+          </div>
           <Link 
-            href="/" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 1 ? "text-white" : "text-white/50 hover:text-white/80"}`}
+            href="/faq" 
+            className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
           >
-            version one
+            faq
           </Link>
-          <Link 
-            href="/v2" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 2 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-          >
-            version two
-          </Link>
-          <Link 
-            href="/v3" 
-            className={`no-underline transition-opacity duration-200 ${currentVersion === 3 ? "text-white" : "text-white/50 hover:text-white/80"}`}
-          >
-            version three
-          </Link>
-        </div>
-        <Link 
-          href="/faq" 
-          className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
-        >
-          faq
-        </Link>
         </div>
       </footer>
     </div>
