@@ -91,7 +91,7 @@ export function NoticedLanding({
   const isVisible = logoAlwaysVisible || phase === "content"
 
   return (
-    <div className="min-h-screen font--body-editorial text-[#f0ede8] lowercase">
+    <div className="min-h-screen font-body-editorial text-[#f0ede8] lowercase">
 
       {/* Video Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0a]">

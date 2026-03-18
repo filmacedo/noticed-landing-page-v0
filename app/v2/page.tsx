@@ -9,7 +9,7 @@ export default function Version2Page() {
       content={[
         {
           type: "stanza",
-          text: "the awkward mixers. the name tags. the small talk.\nthe cold dms. the cringe posts. the personal brands."
+          text: "the name tags.\nthe cringe posts.\nthe cold dms."
         },
         {
           type: "stanza",
@@ -17,12 +17,12 @@ export default function Version2Page() {
         },
         {
           type: "stanza",
-          text: "an agent that understands what we're looking for.\nfinds the right people and makes warm intros\nwhile we do the work we actually care about."
+          text: "an agent that understands what you're looking for\nfinds the right people and makes the warm intro\nwhile we do the work we actually care about"
         },
         {
           type: "tagline",
           text: "noticed.\na personal agent that networks while you build.",
-          italic: true
+          italic: false
         }
       ]}
       ctaText="join the waitlist"

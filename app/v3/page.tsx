@@ -13,24 +13,20 @@ export default function Version3Page() {
         },
         {
           type: "stanza",
-          text: "builders deserve one too."
-        },
-        {
-          type: "brand-inline",
-          text: "noticed"
+          text: "you deserve one too."
         },
         {
           type: "stanza",
-          text: "your personal networking agent."
+          text: "noticed.\nyour personal networking agent."
         },
         {
           type: "stanza",
-          text: "learns what your goals are. finds the best opportunities.\nand advocates for you — so you never have to."
+          text: "learns what your goals are,\nfinds the best opportunities,\nand advocates for you —\nso you don't have to."
         },
         {
           type: "tagline",
-          text: "you focus on building.\nnoticed handles the networking.",
-          italic: true
+          text: "you focus on building noticed handles the networking",
+          italic: false
         }
       ]}
       ctaText="get early access"
