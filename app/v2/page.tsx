@@ -17,7 +17,7 @@ export default function Version2Page() {
         },
         {
           type: "stanza",
-          text: "an agent that understands what you're looking for\nfinds the right people and makes the warm intro\nwhile you do the work we actually care about"
+          text: "an agent that understands what you're looking for\nfinds the right people and makes the warm intro\nwhile you do the work you actually care about"
         },
         {
           type: "tagline",
