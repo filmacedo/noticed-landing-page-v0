@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Cache version: 2.0 - brand update
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
