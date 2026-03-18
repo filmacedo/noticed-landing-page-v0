@@ -91,7 +91,7 @@ export function NoticedLanding({
   const isVisible = logoAlwaysVisible || phase === "content"
 
   return (
-    <div className="min-h-screen text-[#f0ede8] lowercase" style={{ fontFamily: "var(--font-body-editorial)" }}>
+    <div className="h-[100dvh] overflow-hidden text-[#f0ede8] lowercase" style={{ fontFamily: "var(--font-body-editorial)" }}>
 
       {/* Video Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0a]">
@@ -132,7 +132,7 @@ export function NoticedLanding({
 
       {/* Main content */}
       <main
-        className="h-screen flex flex-col justify-center items-center px-6 text-center z-20 relative"
+        className="h-[100dvh] flex flex-col justify-center items-center px-6 text-center z-20 relative"
         style={{
           opacity: isVisible ? 1 : 0,
           transition: "opacity 0.3s ease-out",
