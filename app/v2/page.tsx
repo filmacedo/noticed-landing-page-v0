@@ -26,7 +26,7 @@ export default function Version2Page() {
         }
       ]}
       ctaText="join the waitlist"
-      videoUrl="https://videos.pexels.com/video-files/36244255/36244255-uhd_2560_1440_30fps.mp4"
+      videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370695_1280_720_30fps-f20PN4aSwtYX8A5R72bj2EBkmMA4JF.mp4"
       currentVersion={2}
       logoAlwaysVisible={false}
     />

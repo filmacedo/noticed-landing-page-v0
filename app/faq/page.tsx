@@ -34,21 +34,23 @@ export default function FAQPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f0ede8] lowercase">
-      {/* Back Button - brand primary button style */}
-      <div className="px-6 md:px-8 pt-6">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#f0ede8] lowercase flex flex-col items-center">
+
+      {/* Back Button - liquid glass */}
+      <div className="w-full max-w-xl px-6 md:px-0 pt-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-5 py-2 font-[var(--font-body-functional)] text-[13px] font-semibold normal-case no-underline rounded-md bg-[#f0ede8] text-[#0a0a0a] transition-opacity duration-300 hover:opacity-90"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold normal-case no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
+          style={{ fontFamily: "var(--font-body-functional)" }}
         >
-          <svg 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           >
             <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -58,22 +60,27 @@ export default function FAQPage() {
       </div>
 
       {/* Main Content */}
-      <main className="px-6 md:px-8 pt-8 pb-28 max-w-2xl font-[var(--font-body-editorial)]">
-        {/* Title - Instrument Serif with selective italic */}
-        <h1 className="font-[var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-normal mb-12 leading-tight tracking-[-0.04em]">
-          frequently<br />
-          asked <span className="italic">questions</span>
+      <main className="w-full max-w-xl px-6 md:px-0 pt-10 pb-28" style={{ fontFamily: "var(--font-body-editorial)" }}>
+
+        {/* Title - single line, selective italic */}
+        <h1
+          className="text-3xl md:text-4xl lg:text-5xl font-normal mb-12 leading-tight tracking-[-0.04em]"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          frequently asked <span className="italic">questions</span>
         </h1>
 
-        {/* FAQ Items - Newsreader for editorial body */}
-        <div className="space-y-6">
+        {/* FAQ Items */}
+        <div className="space-y-0">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-[#222222] pb-6">
+            <div key={index} className="py-5">
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full flex justify-between items-center text-left bg-transparent border-none cursor-pointer p-0 text-[#f0ede8] lowercase"
               >
-                <span className="text-lg font-medium">{faq.question}</span>
+                <span className="text-lg font-medium" style={{ fontFamily: "var(--font-body-editorial)" }}>
+                  {faq.question}
+                </span>
                 <svg
                   width="20"
                   height="20"
@@ -102,32 +109,20 @@ export default function FAQPage() {
         </div>
       </main>
 
-      {/* Footer - Instrument Sans (functional) */}
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 font-[var(--font-body-functional)] text-sm font-medium bg-[#0a0a0a]">
+      {/* Footer */}
+      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium bg-[#0a0a0a]" style={{ fontFamily: "var(--font-body-functional)" }}>
         <div className="flex gap-6">
-          <Link 
-            href="/" 
-            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
-          >
+          <Link href="/" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
             version one
           </Link>
-          <Link 
-            href="/v2" 
-            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
-          >
+          <Link href="/v2" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
             version two
           </Link>
-          <Link 
-            href="/v3" 
-            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
-          >
+          <Link href="/v3" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
             version three
           </Link>
         </div>
-        <Link 
-          href="/faq" 
-          className="no-underline text-[#f0ede8] transition-opacity duration-200"
-        >
+        <Link href="/faq" className="no-underline text-[#f0ede8] transition-colors duration-200">
           faq
         </Link>
       </footer>

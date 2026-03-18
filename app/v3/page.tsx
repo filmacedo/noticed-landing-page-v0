@@ -30,7 +30,7 @@ export default function Version3Page() {
         }
       ]}
       ctaText="get early access"
-      videoUrl="https://videos.pexels.com/video-files/36244308/36244308-uhd_2560_1440_30fps.mp4"
+      videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370587_1280_720_30fps-l3xEyED5JpUHDeNy3R0inufLJzvmmv.mp4"
       currentVersion={3}
       logoAlwaysVisible={false}
     />
