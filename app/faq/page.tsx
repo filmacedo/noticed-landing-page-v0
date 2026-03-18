@@ -6,23 +6,23 @@ import Link from "next/link"
 const faqs = [
   {
     question: "what is noticed?",
-    answer: "A personal networking agent for builders. You tell it what you're looking for — investors, clients, hires — and it works your network quietly to make the right connections happen."
+    answer: "a personal networking agent for builders. you tell it what you're looking for — investors, clients, hires — and it works your network quietly to make the right connections happen."
   },
   {
     question: "who is it for?",
-    answer: "Builders. Founders, operators, engineers — anyone who'd rather be heads-down creating than working a room. If you've ever thought \"I should be networking more but I'd rather not,\" this is for you."
+    answer: "builders. founders, operators, engineers — anyone who'd rather be heads-down creating than working a room. if you've ever thought \"i should be networking more but i'd rather not,\" this is for you."
   },
   {
     question: "how does it work?",
-    answer: "You get your own agent. It learns what you're looking for, maps the opportunities already hiding in your network, and surfaces the right people at the right time. No cold outreach. No performative posting. Just the connections that matter."
+    answer: "you get your own agent. it learns what you're looking for, maps the opportunities already hiding in your network, and surfaces the right people at the right time. no cold outreach. no performative posting. just the connections that matter."
   },
   {
     question: "why is it different?",
-    answer: "noticed isn't just a chatbot. It's an agent that represents you, not just an assistant. It doesn't wait for you to ask. It goes out, finds the right people, and opens doors on your behalf."
+    answer: "noticed isn't just a chatbot. it's an agent that represents you, not just an assistant. it doesn't wait for you to ask. it goes out, finds the right people, and opens doors on your behalf."
   },
   {
     question: "when does it launch?",
-    answer: "We're onboarding the first cohort soon. Join the waitlist and you'll be the first to know."
+    answer: "we're onboarding the first cohort soon. join the waitlist and you'll be the first to know."
   }
 ]
 
@@ -110,21 +110,28 @@ export default function FAQPage() {
       </main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium bg-[#0a0a0a]" style={{ fontFamily: "var(--font-body-functional)" }}>
-        <div className="flex gap-6">
-          <Link href="/" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
-            version one
-          </Link>
-          <Link href="/v2" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
-            version two
-          </Link>
-          <Link href="/v3" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-colors duration-200">
-            version three
-          </Link>
+      <footer className="fixed bottom-0 left-0 right-0 z-20">
+        <div className="flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium" style={{ fontFamily: "var(--font-body-functional)" }}>
+          <div className="flex gap-6">
+            {([1, 2, 3] as const).map((v) => (
+              <Link
+                key={v}
+                href={v === 1 ? "/" : `/v${v}`}
+                className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
+              >
+                {`v${v}`}
+              </Link>
+            ))}
+          </div>
+          <div className="flex gap-6">
+            <Link href="/fonts" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
+              fonts
+            </Link>
+            <Link href="/faq" className="no-underline text-[#f0ede8]">
+              faq
+            </Link>
+          </div>
         </div>
-        <Link href="/faq" className="no-underline text-[#f0ede8] transition-colors duration-200">
-          faq
-        </Link>
       </footer>
     </div>
   )
