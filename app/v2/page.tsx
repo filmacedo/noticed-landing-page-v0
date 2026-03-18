@@ -28,6 +28,7 @@ export default function Version2Page() {
       ctaText="join the waitlist"
       videoUrl="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_30fps.mp4"
       currentVersion={2}
+      logoAlwaysVisible={false}
     />
   )
 }

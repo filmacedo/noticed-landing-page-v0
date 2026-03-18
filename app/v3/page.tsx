@@ -36,6 +36,7 @@ export default function Version3Page() {
       ctaText="get early access"
       videoUrl="https://videos.pexels.com/video-files/4763824/4763824-uhd_2560_1440_24fps.mp4"
       currentVersion={3}
+      logoAlwaysVisible={false}
     />
   )
 }

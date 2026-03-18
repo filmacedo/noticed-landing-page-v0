@@ -28,6 +28,9 @@ export function NoticedLanding({
 }: NoticedLandingProps) {
   const [phase, setPhase] = useState<"brand" | "transition" | "content">("brand")
   const [revealStep, setRevealStep] = useState(0)
+  
+  const contentLength = content.length
+  const hasManifestoTitle = manifestoTitle !== ""
 
   useEffect(() => {
     if (logoAlwaysVisible) {
@@ -47,15 +50,15 @@ export function NoticedLanding({
   useEffect(() => {
     if (phase !== "content") return
 
-    const hasTitle = manifestoTitle !== "" && !logoAlwaysVisible
-    const totalSteps = content.length + (hasTitle ? 1 : 0) + 1
+    const hasTitle = hasManifestoTitle && !logoAlwaysVisible
+    const totalSteps = contentLength + (hasTitle ? 1 : 0) + 1
     const intervals: NodeJS.Timeout[] = []
     for (let i = 1; i <= totalSteps; i++) {
       intervals.push(setTimeout(() => setRevealStep(i), i * 150))
     }
 
     return () => intervals.forEach(clearTimeout)
-  }, [phase, content.length, manifestoTitle, logoAlwaysVisible])
+  }, [phase, contentLength, hasManifestoTitle, logoAlwaysVisible])
 
   const getRevealStyle = (step: number) => ({
     opacity: revealStep >= step ? 1 : 0,
@@ -106,6 +109,16 @@ export function NoticedLanding({
 
       <div className="fixed inset-0 bg-black/45 -z-10" />
 
+      {/* For logoAlwaysVisible (v1): Logo as header at top of page */}
+      {logoAlwaysVisible && (
+        <header className="fixed top-0 left-0 right-0 flex justify-center items-center pt-8 md:pt-12 z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[0.08em]">
+            noticed
+          </h1>
+        </header>
+      )}
+
+      {/* For other versions: Centered brand splash that fades out */}
       {!logoAlwaysVisible && phase !== "content" && (
         <div 
           className="fixed inset-0 flex items-center justify-center z-10 transition-opacity duration-500 ease-out"
@@ -125,10 +138,11 @@ export function NoticedLanding({
           pointerEvents: phase === "content" || logoAlwaysVisible ? "auto" : "none"
         }}
       >
-        {hasTitle && (
+        {/* Title only for non-logoAlwaysVisible versions */}
+        {hasTitle && !logoAlwaysVisible && (
           <h1 
             className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[0.08em]"
-            style={logoAlwaysVisible ? { opacity: 1 } : getRevealStyle(1)}
+            style={getRevealStyle(1)}
           >
             {manifestoTitle}
           </h1>
@@ -147,7 +161,11 @@ export function NoticedLanding({
         </a>
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm">
+      <footer className="fixed bottom-0 left-0 right-0">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 pointer-events-none" />
+        
+        <div className="relative flex justify-between items-center px-6 md:px-8 py-5 text-sm">
         <div className="flex gap-6">
           <Link 
             href="/" 
@@ -174,6 +192,7 @@ export function NoticedLanding({
         >
           faq
         </Link>
+        </div>
       </footer>
     </div>
   )
