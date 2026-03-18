@@ -1,33 +1,31 @@
 "use client"
 
-import { NoticedLanding } from "@/components/noticed-landing"
+import { NoticedLanding } from "@/components/landing"
 
 export default function Version1Page() {
   return (
     <NoticedLanding
-      manifestoTitle=""
       content={[
         {
           type: "stanza",
-          text: "the loudest people in the room\nare rarely the most talented."
+          text: "you build more than you talk."
         },
         {
           type: "stanza",
-          text: "they're just comfortable performing."
+          text: "you're too focused to network\ntoo proud to beg for attention\ntoo good to go unnoticed."
         },
         {
           type: "stanza",
-          text: "the best founders, engineers, designers —\nthey're heads-down building."
+          text: "so we built a personal agent\nthat works as hard as you do."
         },
         {
           type: "stanza",
-          text: "too busy to post.\ntoo proud to beg for intros.\ntoo good to go unnoticed."
+          text: "noticed\nfinds the right people\nand makes warm intros\nwhile you stay in the zone."
         }
       ]}
-      ctaText="get noticed first"
+      ctaText="get early access"
       videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370643_1280_720_30fps-VuqMj6LtVWVtmBUVChkUOMSW6xLR02.mp4"
       currentVersion={1}
-      logoAlwaysVisible={true}
     />
   )
 }
