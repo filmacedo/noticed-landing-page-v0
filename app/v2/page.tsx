@@ -21,7 +21,7 @@ export default function Version2Page() {
         },
         {
           type: "tagline",
-          text: "noticed.\na personal agent that networks while you build.",
+          text: "noticed.\na personal agent\nthat networks while you build.",
           italic: false
         }
       ]}
