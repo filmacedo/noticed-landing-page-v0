@@ -1,6 +1,6 @@
 "use client"
-// Cache bust: v1.2
-import { NoticedLanding } from "@/components/noticed-landing"
+
+import { NoticedLanding } from "@/components/landing"
 
 export default function Version2Page() {
   return (

@@ -36,14 +36,14 @@ export function NoticedLanding({
     if (phase !== "content") return
     const totalSteps = contentLength + 1
     for (let i = 1; i <= totalSteps; i++) {
-      setTimeout(() => setRevealStep(i), i * 150)
+      setTimeout(() => setRevealStep(i), i * 300)
     }
   }, [phase, contentLength])
 
   const getRevealStyle = (step: number) => ({
     opacity: revealStep >= step ? 1 : 0,
-    transform: revealStep >= step ? "translateY(0)" : "translateY(12px)",
-    transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
+    transform: revealStep >= step ? "translateY(0)" : "translateY(8px)",
+    transition: "opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)",
   })
 
   return (
