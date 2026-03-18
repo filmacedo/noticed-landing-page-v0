@@ -5,7 +5,6 @@ import { NoticedLanding } from "@/components/noticed-landing"
 export default function Version1Page() {
   return (
     <NoticedLanding
-      manifestoTitle=""
       content={[
         {
           type: "stanza",
@@ -27,7 +26,6 @@ export default function Version1Page() {
       ctaText="get noticed first"
       videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370643_1280_720_30fps-VuqMj6LtVWVtmBUVChkUOMSW6xLR02.mp4"
       currentVersion={1}
-      logoAlwaysVisible={true}
     />
   )
 }

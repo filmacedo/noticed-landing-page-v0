@@ -5,7 +5,6 @@ import { NoticedLanding } from "@/components/noticed-landing"
 export default function Version3Page() {
   return (
     <NoticedLanding
-      manifestoTitle=""
       content={[
         {
           type: "stanza",
@@ -24,15 +23,13 @@ export default function Version3Page() {
           text: "learns what your goals are,\nfinds the best opportunities,\nand advocates for you —\nso you don't have to."
         },
         {
-          type: "tagline",
-          text: "you focus on building.\nnoticed handles the networking.",
-          italic: false
+          type: "stanza",
+          text: "you focus on building.\nnoticed handles the networking."
         }
       ]}
       ctaText="get early access"
       videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370587_1280_720_30fps-l3xEyED5JpUHDeNy3R0inufLJzvmmv.mp4"
       currentVersion={3}
-      logoAlwaysVisible={false}
     />
   )
 }
