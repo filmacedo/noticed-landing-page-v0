@@ -113,7 +113,7 @@ export default function FAQPage() {
       <footer className="fixed bottom-0 left-0 right-0 z-20">
         <div className="flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium" style={{ fontFamily: "var(--font-body-functional)" }}>
           <div className="flex gap-6">
-            {([1, 2, 3] as const).map((v) => (
+            {([1, 2, 3, 4] as const).map((v) => (
               <Link
                 key={v}
                 href={v === 1 ? "/" : `/v${v}`}

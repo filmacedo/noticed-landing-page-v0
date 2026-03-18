@@ -27,7 +27,7 @@ export default function Version2Page() {
           text: "noticed.\na personal agent\nthat networks while you build."
         }
       ]}
-      ctaText="join the waitlist"
+      ctaText="get early access"
       videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15370695_1280_720_30fps-f20PN4aSwtYX8A5R72bj2EBkmMA4JF.mp4"
       currentVersion={2}
     />
