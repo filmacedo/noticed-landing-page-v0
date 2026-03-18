@@ -25,7 +25,7 @@ export default function Version1Page() {
         }
       ]}
       ctaText="get noticed first"
-      videoUrl="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
+      videoUrl="https://videos.pexels.com/video-files/36244305/36244305-uhd_2560_1440_30fps.mp4"
       currentVersion={1}
       logoAlwaysVisible={true}
     />
