@@ -149,8 +149,8 @@ export function NoticedLanding({
           </h1>
         )}
 
-        {/* Manifesto stanzas - Newsreader for editorial, 20px, 1.25 line-height, 1.5em gap */}
-        <div className="max-w-xl text-[20px] leading-[1.25] space-y-6" style={{ fontFamily: "var(--font-body-editorial)" }}>
+        {/* Manifesto stanzas - Newsreader for editorial, 16px mobile / 20px desktop, 1.25 line-height, 1.5em gap */}
+        <div className="max-w-xl text-[16px] md:text-[20px] leading-[1.25] space-y-6" style={{ fontFamily: "var(--font-body-editorial)" }}>
           {content.map((block, index) => renderContent(block, index))}
         </div>
 
