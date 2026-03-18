@@ -149,15 +149,15 @@ export function NoticedLanding({
           </h1>
         )}
 
-        {/* Manifesto stanzas - Newsreader for editorial, 22px, 1.25 line-height, 1.5em gap */}
-        <div className="max-w-xl font-[var(--font-body-editorial)] text-[22px] leading-[1.25] space-y-6">
+        {/* Manifesto stanzas - Newsreader for editorial, 20px, 1.25 line-height, 1.5em gap */}
+        <div className="max-w-xl font-[var(--font-body-editorial)] text-[20px] leading-[1.25] space-y-6">
           {content.map((block, index) => renderContent(block, index))}
         </div>
 
         {/* CTA - Instrument Sans (functional), liquid glass with warm neutral palette */}
         <a
           href="#"
-          className="inline-block mt-12 px-6 py-2.5 font-[var(--font-body-functional)] text-[13px] font-semibold normal-case tracking-normal no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
+          className="inline-block mt-12 px-6 py-2.5 font-[var(--font-body-functional)] text-[16px] font-semibold normal-case tracking-normal no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
           style={getRevealStyle(contentLength + (logoAlwaysVisible ? 1 : (hasManifestoTitle ? 2 : 1)))}
         >
           {ctaText}
