@@ -34,12 +34,12 @@ export default function FAQPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-[#f5f5f5] lowercase tracking-wide">
-      {/* Back Button */}
+    <div className="min-h-screen bg-[#0a0a0a] text-[#f0ede8] lowercase">
+      {/* Back Button - brand primary button style */}
       <div className="px-6 md:px-8 pt-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-white no-underline rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:bg-white/20 hover:border-white/35"
+          className="inline-flex items-center gap-2 px-5 py-2 font-[var(--font-body-functional)] text-[13px] font-semibold normal-case no-underline rounded-md bg-[#f0ede8] text-[#0a0a0a] transition-opacity duration-300 hover:opacity-90"
         >
           <svg 
             width="16" 
@@ -58,20 +58,20 @@ export default function FAQPage() {
       </div>
 
       {/* Main Content */}
-      <main className="px-6 md:px-8 pt-8 pb-28 max-w-2xl">
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-12 leading-tight">
+      <main className="px-6 md:px-8 pt-8 pb-28 max-w-2xl font-[var(--font-body-editorial)]">
+        {/* Title - Instrument Serif with selective italic */}
+        <h1 className="font-[var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-normal mb-12 leading-tight tracking-[-0.04em]">
           frequently<br />
           asked <span className="italic">questions</span>
         </h1>
 
-        {/* FAQ Items */}
+        {/* FAQ Items - Newsreader for editorial body */}
         <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-white/10 pb-6">
+            <div key={index} className="border-b border-[#222222] pb-6">
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full flex justify-between items-center text-left bg-transparent border-none cursor-pointer p-0 text-[#f5f5f5] lowercase tracking-wide"
+                className="w-full flex justify-between items-center text-left bg-transparent border-none cursor-pointer p-0 text-[#f0ede8] lowercase"
               >
                 <span className="text-lg font-medium">{faq.question}</span>
                 <svg
@@ -93,7 +93,7 @@ export default function FAQPage() {
                   openIndex === index ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="text-base text-white/70 leading-relaxed">
+                <p className="text-base text-[#8a8580] leading-relaxed normal-case">
                   {faq.answer}
                 </p>
               </div>
@@ -102,31 +102,31 @@ export default function FAQPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 text-sm bg-black">
+      {/* Footer - Instrument Sans (functional) */}
+      <footer className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 md:px-8 py-5 font-[var(--font-body-functional)] text-sm font-medium bg-[#0a0a0a]">
         <div className="flex gap-6">
           <Link 
             href="/" 
-            className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
+            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
           >
             version one
           </Link>
           <Link 
             href="/v2" 
-            className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
+            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
           >
             version two
           </Link>
           <Link 
             href="/v3" 
-            className="no-underline text-white/50 hover:text-white/80 transition-opacity duration-200"
+            className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
           >
             version three
           </Link>
         </div>
         <Link 
           href="/faq" 
-          className="no-underline text-white transition-opacity duration-200"
+          className="no-underline text-[#f0ede8] transition-opacity duration-200"
         >
           faq
         </Link>

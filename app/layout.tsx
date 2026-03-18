@@ -1,14 +1,31 @@
 import type { Metadata } from "next"
-import { Cormorant_Garamond } from "next/font/google"
+import { Instrument_Serif, Newsreader, Instrument_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const cormorant = Cormorant_Garamond({ 
+// Display / wordmark
+const instrumentSerif = Instrument_Serif({ 
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-display"
+})
+
+// Body (editorial) - landing page, manifesto, blog
+const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal", "italic"],
-  variable: "--font-cormorant"
-});
+  variable: "--font-body-editorial"
+})
+
+// Body (functional) + UI - buttons, nav, forms
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-body-functional"
+})
 
 export const metadata: Metadata = {
   title: 'noticed',
@@ -40,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${cormorant.className} antialiased bg-black text-[#f5f5f5] lowercase tracking-wide`}>
+      <body className={`${instrumentSerif.variable} ${newsreader.variable} ${instrumentSans.variable} antialiased bg-[#0a0a0a] text-[#f0ede8]`}>
         {children}
         <Analytics />
       </body>
