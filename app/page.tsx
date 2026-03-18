@@ -8,19 +8,19 @@ export default function Version1Page() {
       content={[
         {
           type: "stanza",
-          text: "you build more than you talk"
+          text: "you build more than you talk."
         },
         {
           type: "stanza",
-          text: "you're too focused to network\ntoo proud to beg for attention\ntoo good to go unnoticed"
+          text: "you're too focused to network\ntoo proud to beg for attention\ntoo good to go unnoticed."
         },
         {
           type: "stanza",
-          text: "so we built a personal agent\nthat works as hard as you do"
+          text: "so we built a personal agent\nthat works as hard as you do."
         },
         {
           type: "stanza",
-          text: "noticed\nfinds the right people\nmakes warm intros\nwhile you stay in the zone"
+          text: "noticed\nfinds the right people\nand makes warm intros\nwhile you stay in the zone."
         }
       ]}
       ctaText="get early access"
