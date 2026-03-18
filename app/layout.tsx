@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+// Build: 2.1 - brand update with new colors
 import { Instrument_Serif, Newsreader, Instrument_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"

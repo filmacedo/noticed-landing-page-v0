@@ -56,9 +56,9 @@ export function NoticedLanding({
 
       <div className="fixed inset-0 bg-[#0a0a0a]/45 -z-10" />
 
-      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
+      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a]/80 to-transparent z-[5] pointer-events-none" />
 
-      <header className="fixed top-0 left-0 right-0 z-20">
+      <header className="fixed top-0 left-0 right-0 z-30">
         <div className="flex justify-between items-center px-6 md:px-8 py-5">
           <Link 
             href="/" 
