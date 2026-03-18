@@ -25,7 +25,7 @@ export default function Version3Page() {
         },
         {
           type: "tagline",
-          text: "you focus on building noticed handles the networking",
+          text: "you focus on building.\nnoticed handles the networking.",
           italic: false
         }
       ]}
