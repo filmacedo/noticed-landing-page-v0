@@ -1,5 +1,5 @@
 "use client"
-// v1.1 - Updated brand links and colors
+
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
@@ -26,17 +26,15 @@ export function NoticedLanding({
   const [revealStep, setRevealStep] = useState(0)
   const contentLength = content.length
 
-  // Phase 1: Show "noticed" splash for 2s, then fade out over 0.5s
   useEffect(() => {
     const t1 = setTimeout(() => setPhase("transition"), 2000)
     const t2 = setTimeout(() => setPhase("content"), 2500)
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [])
 
-  // Phase 2: Reveal content stanza by stanza
   useEffect(() => {
     if (phase !== "content") return
-    const totalSteps = contentLength + 1 // +1 for CTA
+    const totalSteps = contentLength + 1
     for (let i = 1; i <= totalSteps; i++) {
       setTimeout(() => setRevealStep(i), i * 150)
     }
@@ -50,21 +48,16 @@ export function NoticedLanding({
 
   return (
     <div className="h-[100dvh] overflow-hidden text-[#f0ede8] lowercase" style={{ fontFamily: "var(--font-body-editorial)" }}>
-
-      {/* Video Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0a]">
         <video autoPlay muted loop playsInline className="w-full h-full object-cover">
           <source src={videoUrl} type="video/mp4" />
         </video>
       </div>
 
-      {/* Dark overlay */}
       <div className="fixed inset-0 bg-[#0a0a0a]/45 -z-10" />
 
-      {/* Top gradient */}
       <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
 
-      {/* Header - always visible */}
       <header className="fixed top-0 left-0 right-0 z-20">
         <div className="flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium" style={{ fontFamily: "var(--font-body-functional)" }}>
           <Link href="/" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
@@ -81,10 +74,8 @@ export function NoticedLanding({
         </div>
       </header>
 
-      {/* Bottom gradient */}
       <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a]/90 to-transparent z-10 pointer-events-none" />
 
-      {/* Centered brand splash - fades out */}
       {phase !== "content" && (
         <div
           className="fixed inset-0 flex items-center justify-center z-20 transition-opacity duration-500 ease-out"
@@ -96,7 +87,6 @@ export function NoticedLanding({
         </div>
       )}
 
-      {/* Main content - centered */}
       <main
         className="h-[100dvh] flex flex-col justify-center items-center px-6 text-center z-20 relative"
         style={{
@@ -105,7 +95,6 @@ export function NoticedLanding({
           pointerEvents: phase === "content" ? "auto" : "none",
         }}
       >
-        {/* Manifesto stanzas */}
         <div className="max-w-xl text-[16px] md:text-[20px] leading-[1.25] space-y-6" style={{ fontFamily: "var(--font-body-editorial)" }}>
           {content.map((block, index) => (
             <p
@@ -117,7 +106,6 @@ export function NoticedLanding({
           ))}
         </div>
 
-        {/* CTA Button */}
         <a
           href="#"
           className="inline-block mt-12 px-8 py-3 text-[16px] font-semibold normal-case tracking-normal no-underline rounded-full bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
@@ -127,7 +115,6 @@ export function NoticedLanding({
         </a>
       </main>
 
-      {/* Footer */}
       <footer className="fixed bottom-0 left-0 right-0 z-20">
         <div className="flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium" style={{ fontFamily: "var(--font-body-functional)" }}>
           <div className="flex gap-6">
