@@ -119,7 +119,7 @@ export function NoticedLanding({
                 key={v}
                 href={v === 1 ? "/" : `/v${v}`}
                 className={`no-underline transition-opacity duration-200 ${
-                  currentVersion === v ? "text-[#f0ede8]" : "text-[#8a8580] hover:text-[#f0ede8]"
+                  currentVersion === v ? "text-[#f0ede8]" : "text-[#a09a94] hover:text-[#f0ede8]"
                 }`}
               >
                 {`v${v}`}
@@ -127,10 +127,10 @@ export function NoticedLanding({
             ))}
           </div>
           <div className="flex gap-6">
-            <Link href="/fonts" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
-              fonts
+            <Link href="/brand" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
+              brand
             </Link>
-            <Link href="/faq" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
+            <Link href="/faq" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
               faq
             </Link>
           </div>

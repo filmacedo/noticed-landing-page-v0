@@ -100,7 +100,7 @@ export default function FAQPage() {
                   openIndex === index ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="text-base text-[#8a8580] leading-relaxed normal-case">
+                <p className="text-base text-[#a09a94] leading-relaxed normal-case">
                   {faq.answer}
                 </p>
               </div>
@@ -117,15 +117,15 @@ export default function FAQPage() {
               <Link
                 key={v}
                 href={v === 1 ? "/" : `/v${v}`}
-                className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200"
+                className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200"
               >
                 {`v${v}`}
               </Link>
             ))}
           </div>
           <div className="flex gap-6">
-            <Link href="/fonts" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
-              fonts
+            <Link href="/brand" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
+              brand
             </Link>
             <Link href="/faq" className="no-underline text-[#f0ede8]">
               faq
