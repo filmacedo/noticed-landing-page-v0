@@ -105,7 +105,7 @@ canvas{display:none}
 
 <div class="page">
   <div class="page-header">
-    <div class="page-title">noticed</div>
+    <a href="/" class="page-title" style="text-decoration:none;color:inherit;cursor:pointer;transition:opacity .2s" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">noticed</a>
     <div class="page-subtitle">brand kit — march 2026</div>
   </div>
 
