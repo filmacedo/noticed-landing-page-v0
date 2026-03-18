@@ -157,7 +157,7 @@ export function NoticedLanding({
         {/* CTA - Instrument Sans (functional), liquid glass with warm neutral palette */}
         <a
           href="#"
-          className="inline-block mt-12 px-6 py-2.5 text-[16px] font-semibold normal-case tracking-normal no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
+          className="inline-block mt-12 px-8 py-3 text-[16px] font-semibold normal-case tracking-normal no-underline rounded-full bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
           style={{ ...getRevealStyle(contentLength + (logoAlwaysVisible ? 1 : (hasManifestoTitle ? 2 : 1))), fontFamily: "var(--font-body-functional)" }}
         >
           {ctaText}

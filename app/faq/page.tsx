@@ -40,7 +40,7 @@ export default function FAQPage() {
       <div className="w-full max-w-xl px-6 md:px-0 pt-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold normal-case no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold normal-case no-underline rounded-full bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
           style={{ fontFamily: "var(--font-body-functional)" }}
         >
           <svg
