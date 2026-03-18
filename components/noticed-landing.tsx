@@ -176,13 +176,18 @@ export function NoticedLanding({
                   currentVersion === v ? "text-[#f0ede8]" : "text-[#8a8580] hover:text-[#f0ede8]"
                 }`}
               >
-                {`version ${["one", "two", "three"][v - 1]}`}
+                {`v${v}`}
               </Link>
             ))}
           </div>
-          <Link href="/faq" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
-            faq
-          </Link>
+          <div className="flex gap-6">
+            <Link href="/fonts" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
+              fonts
+            </Link>
+            <Link href="/faq" className="no-underline text-[#8a8580] hover:text-[#f0ede8] transition-opacity duration-200">
+              faq
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
