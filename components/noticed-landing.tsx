@@ -1,5 +1,5 @@
 "use client"
-
+// v1.1 - Updated brand links and colors
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
@@ -63,6 +63,23 @@ export function NoticedLanding({
 
       {/* Top gradient */}
       <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
+
+      {/* Header - always visible */}
+      <header className="fixed top-0 left-0 right-0 z-20">
+        <div className="flex justify-between items-center px-6 md:px-8 py-5 text-sm font-medium" style={{ fontFamily: "var(--font-body-functional)" }}>
+          <Link href="/" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
+            noticed
+          </Link>
+          <a 
+            href="https://x.com/noticedso" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200"
+          >
+            follow
+          </a>
+        </div>
+      </header>
 
       {/* Bottom gradient */}
       <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a]/90 to-transparent z-10 pointer-events-none" />
