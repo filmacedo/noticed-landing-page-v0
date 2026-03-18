@@ -91,7 +91,7 @@ export function NoticedLanding({
   const isVisible = logoAlwaysVisible || phase === "content"
 
   return (
-    <div className="min-h-screen font-[var(--font-body-editorial)] text-[#f0ede8] lowercase">
+    <div className="min-h-screen font--body-editorial text-[#f0ede8] lowercase">
 
       {/* Video Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0a]">
@@ -112,7 +112,7 @@ export function NoticedLanding({
       {/* v1: Logo as page header */}
       {logoAlwaysVisible && (
         <header className="fixed top-0 left-0 right-0 flex justify-center items-center pt-10 md:pt-14 z-20">
-          <h1 className="font-[var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.04em]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.04em]">
             noticed
           </h1>
         </header>
@@ -124,7 +124,7 @@ export function NoticedLanding({
           className="fixed inset-0 flex items-center justify-center z-20 transition-opacity duration-500 ease-out"
           style={{ opacity: phase === "brand" ? 1 : 0, pointerEvents: "none" }}
         >
-          <h1 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-normal tracking-[-0.04em]">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-[-0.04em]">
             noticed
           </h1>
         </div>
@@ -142,7 +142,7 @@ export function NoticedLanding({
         {/* Title for v2/v3 */}
         {hasManifestoTitle && !logoAlwaysVisible && (
           <h1
-            className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[-0.04em]"
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-normal mb-10 tracking-[-0.04em]"
             style={getRevealStyle(1)}
           >
             {manifestoTitle}
@@ -150,14 +150,14 @@ export function NoticedLanding({
         )}
 
         {/* Manifesto stanzas - Newsreader for editorial, 20px, 1.25 line-height, 1.5em gap */}
-        <div className="max-w-xl font-[var(--font-body-editorial)] text-[20px] leading-[1.25] space-y-6">
+        <div className="max-w-xl font-body-editorial text-[20px] leading-[1.25] space-y-6">
           {content.map((block, index) => renderContent(block, index))}
         </div>
 
         {/* CTA - Instrument Sans (functional), liquid glass with warm neutral palette */}
         <a
           href="#"
-          className="inline-block mt-12 px-6 py-2.5 font-[var(--font-body-functional)] text-[16px] font-semibold normal-case tracking-normal no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
+          className="inline-block mt-12 px-6 py-2.5 font-body-functional text-[16px] font-semibold normal-case tracking-normal no-underline rounded-md bg-[#f0ede8]/10 backdrop-blur-lg border border-[#f0ede8]/20 text-[#f0ede8] shadow-[0_4px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(240,237,232,0.2)] transition-colors duration-300 hover:bg-[#f0ede8]/15 hover:border-[#f0ede8]/30"
           style={getRevealStyle(contentLength + (logoAlwaysVisible ? 1 : (hasManifestoTitle ? 2 : 1)))}
         >
           {ctaText}
@@ -166,7 +166,7 @@ export function NoticedLanding({
 
       {/* Footer - Instrument Sans (functional) */}
       <footer className="fixed bottom-0 left-0 right-0 z-20">
-        <div className="flex justify-between items-center px-6 md:px-8 py-5 font-[var(--font-body-functional)] text-sm font-medium">
+        <div className="flex justify-between items-center px-6 md:px-8 py-5 font-body-functional text-sm font-medium">
           <div className="flex gap-6">
             {([1, 2, 3] as const).map((v) => (
               <Link
