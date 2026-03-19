@@ -8,7 +8,7 @@ export default function Version3Page() {
       content={[
         {
           type: "stanza",
-          text: "artists have agents. actors have agents.\neven houses have agents to promote them."
+          text: "artists have agents.\nathletes have agents.\neven houses have agents."
         },
         {
           type: "stanza",
@@ -20,11 +20,11 @@ export default function Version3Page() {
         },
         {
           type: "stanza",
-          text: "learns what your goals are,\nfinds the best opportunities,\nand advocates for you —\nso you don't have to."
+          text: "it learns what your goals are,\nfinds the best opportunities,\nand advocates for you\nso you don't have to."
         },
         {
           type: "stanza",
-          text: "you focus on building.\nnoticed handles the networking."
+          text: "you focus on building\nnoticed handles the networking"
         }
       ]}
       ctaText="get early access"

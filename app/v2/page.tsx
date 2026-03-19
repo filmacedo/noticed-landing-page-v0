@@ -8,23 +8,23 @@ export default function Version2Page() {
       content={[
         {
           type: "stanza",
-          text: "we hate networking."
+          text: "networking was designed for extroverts.\nthe happy hours. the cold emails. the cringe posts."
         },
         {
           type: "stanza",
-          text: "the name tags.\nthe cringe posts.\nthe cold dms."
+          text: "what if there was a better way to get noticed?"
         },
         {
           type: "stanza",
-          text: "so we stopped trying to network\nand built a better way to get noticed."
+          text: "imagine a personal agent that networks for you.\nno events. no apps. no feeds."
         },
         {
           type: "stanza",
-          text: "an agent that understands what you're looking for\nfinds the right people and makes the warm intro\nwhile you do the work you actually care about"
+          text: "it learns what you're building,\nquietly watches your network,\nand makes the perfect intros."
         },
         {
           type: "stanza",
-          text: "noticed.\na personal agent\nthat networks while you build."
+          text: "it's called noticed,\nyour personal networking agent."
         }
       ]}
       ctaText="get early access"
