@@ -8,7 +8,8 @@ export default function Version1Page() {
       content={[
         {
           type: "stanza",
-          text: "you build more than you talk."
+          text: "you build more than you talk.",
+          bold: true
         },
         {
           type: "stanza",

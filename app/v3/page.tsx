@@ -16,7 +16,8 @@ export default function Version3Page() {
         },
         {
           type: "stanza",
-          text: "meet noticed.\nyour personal networking agent."
+          text: "meet noticed.\nyour personal networking agent.",
+          bold: true
         },
         {
           type: "stanza",
