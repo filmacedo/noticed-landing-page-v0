@@ -8,8 +8,7 @@ export default function Version2Page() {
       content={[
         {
           type: "stanza",
-          text: "networking was designed for extroverts.\nthe happy hours. the cold emails. the cringe posts.",
-          bold: true
+          text: "networking was designed for extroverts.\nthe happy hours. the cold emails. the cringe posts."
         },
         {
           type: "stanza",

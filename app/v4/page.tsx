@@ -8,8 +8,7 @@ export default function Version4Page() {
       content={[
         {
           type: "stanza",
-          text: "how to get noticed?",
-          bold: true
+          text: "how to get noticed?"
         },
         {
           type: "stanza",

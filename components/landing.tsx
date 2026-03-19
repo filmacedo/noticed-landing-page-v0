@@ -7,7 +7,6 @@ interface ContentBlock {
   type: "stanza" | "tagline"
   text: string
   italic?: boolean
-  bold?: boolean
 }
 
 interface NoticedLandingProps {
@@ -105,7 +104,7 @@ export function NoticedLanding({
           {content.map((block, index) => (
             <p
               key={index}
-              className={`${block.italic ? "italic" : ""} ${block.bold ? "font-semibold" : ""}`}
+              className={block.italic ? "italic" : ""}
               style={getRevealStyle(index + 1)}
               dangerouslySetInnerHTML={{ __html: block.text.replace(/\n/g, "<br />") }}
             />
