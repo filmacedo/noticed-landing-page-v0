@@ -62,7 +62,7 @@ export function NoticedLanding({
         <div className="flex justify-between items-center px-6 md:px-8 py-5">
           <Link 
             href="/" 
-            className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200 text-lg tracking-[-0.04em]"
+            className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200 text-[20px] tracking-[-0.04em]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             noticed
