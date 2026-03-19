@@ -124,6 +124,9 @@ export default function FAQPage() {
             ))}
           </div>
           <div className="flex gap-6">
+            <Link href="/art" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
+              art
+            </Link>
             <Link href="/brand" className="no-underline text-[#a09a94] hover:text-[#f0ede8] transition-opacity duration-200">
               brand
             </Link>
